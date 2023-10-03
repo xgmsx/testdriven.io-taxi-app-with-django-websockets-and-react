@@ -18,12 +18,10 @@ function App () {
   });
 
   const logIn = async (username, password) => {
-    const url = `${process.env.REACT_APP_BASE_URL}/api/sign_up/`;
+    const url = `${process.env.REACT_APP_BASE_URL}/api/log_in/`;
     try {
       const response = await axios.post(url, { username, password });
-      window.localStorage.setItem(
-        'taxi.auth', JSON.stringify(response.data)
-      );
+      window.localStorage.setItem('taxi.auth', JSON.stringify(response.data));
       setLoggedIn(true);
       return { response, isError: false };
     } catch (error) {
