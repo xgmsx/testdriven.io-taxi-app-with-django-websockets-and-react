@@ -9,6 +9,8 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import Landing from './components/Landing';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
+import Driver from './components/Driver';
+import Rider from './components/Rider';
 
 import './App.css';
 
@@ -63,6 +65,8 @@ function App () {
           }
         />
       </Route>
+      <Route path='rider' element={<Rider />} />
+      <Route path='driver' element={<Driver />} />
     </Routes>
   );
 }

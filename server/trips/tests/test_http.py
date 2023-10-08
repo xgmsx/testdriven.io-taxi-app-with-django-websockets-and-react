@@ -82,7 +82,7 @@ class HttpTripTest(APITestCase):
         self.user = create_user()
         self.client.login(username=self.user.username, password=PASSWORD)
 
-    def test_user_can_list_trips(self): # changed
+    def test_user_can_list_trips(self):
         trips = [
             Trip.objects.create(
                 pick_up_address='A', drop_off_address='B', rider=self.user),
@@ -97,7 +97,7 @@ class HttpTripTest(APITestCase):
         act_trip_ids = [trip.get('id') for trip in response.data]
         self.assertCountEqual(act_trip_ids, exp_trip_ids)
 
-    def test_user_can_retrieve_trip_by_id(self):  # changed
+    def test_user_can_retrieve_trip_by_id(self):
         trip = Trip.objects.create(
             pick_up_address='A', drop_off_address='B', rider=self.user)
         response = self.client.get(trip.get_absolute_url())
