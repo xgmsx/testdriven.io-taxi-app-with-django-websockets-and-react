@@ -167,6 +167,8 @@ SIMPLE_JWT = {
 }
 
 CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "http://taxi-client:3000",
     "http://localhost:3001",
     "http://taxi-client:3001",
 ]

@@ -3,20 +3,20 @@ import axios from 'axios';
 import {
   Button, Container, Form, Nav, Navbar
 } from 'react-bootstrap';
-import { isRider } from './services/AuthService';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Outlet, Route, Routes } from 'react-router-dom';
 
-import Landing from './components/Landing';
-import LogIn from './components/LogIn';
-import SignUp from './components/SignUp';
 import Driver from './components/Driver';
 import DriverDashboard from './components/DriverDashboard';
 import DriverDetail from './components/DriverDetail';
+import Landing from './components/Landing';
+import SignUp from './components/SignUp';
+import LogIn from './components/LogIn';
 import Rider from './components/Rider';
 import RiderDashboard from './components/RiderDashboard';
 import RiderDetail from './components/RiderDetail';
 import RiderRequest from './components/RiderRequest';
+import { isRider } from './services/AuthService';
 
 import './App.css';
 
@@ -29,10 +29,13 @@ function App () {
     const url = `${process.env.REACT_APP_BASE_URL}/api/log_in/`;
     try {
       const response = await axios.post(url, { username, password });
-      window.localStorage.setItem('taxi.auth', JSON.stringify(response.data));
+      window.localStorage.setItem(
+        'taxi.auth', JSON.stringify(response.data)
+      );
       setLoggedIn(true);
       return { response, isError: false };
-    } catch (error) {
+    }
+    catch (error) {
       console.error(error);
       return { response: error, isError: true };
     }
@@ -70,15 +73,15 @@ function App () {
             />
           }
         />
-      </Route>
-      <Route path='rider' element={<Rider />}>
-        <Route index element={<RiderDashboard />} />
-        <Route path='request' element={<RiderRequest />} />
-        <Route path=':id' element={<RiderDetail />} />
-      </Route>
-      <Route path='driver' element={<Driver />}>
-        <Route index element={<DriverDashboard />} />
-        <Route path=':id' element={<DriverDetail />} />
+        <Route path='rider' element={<Rider />}>
+          <Route index element={<RiderDashboard />} />
+          <Route path='request' element={<RiderRequest />} />
+          <Route path=':id' element={<RiderDetail />} />
+        </Route>
+        <Route path='driver' element={<Driver />}>
+          <Route index element={<DriverDashboard />} />
+          <Route path=':id' element={<DriverDetail />} />
+        </Route>
       </Route>
     </Routes>
   );
