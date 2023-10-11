@@ -46,6 +46,9 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
       - REACT_APP_BASE_URL=http://localhost:8003
+      - ESLINT_NO_DEV_ERRORS=true
+      - REACT_ESLINT_NO_DEV_ERRORS=true
+      - REACT_APP_ESLINT_NO_DEV_ERRORS=true
     ports:
       - 3001:3000
     stdin_open: true
